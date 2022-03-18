@@ -13,7 +13,7 @@ print(settings.database_password)
 
 app=FastAPI() 
 
-origins=["https://www.google.com"]
+origins=["*"]
 
 app.add_middleware(
     CORSMiddleware,
