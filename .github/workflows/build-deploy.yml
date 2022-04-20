@@ -10,7 +10,7 @@ jobs:
       DATABASE_HOSTNAME: localhost
       DATABASE_PORT: 5432
       DATABASE_PASSWORD: password123
-      DATABASE_NAME: fastapi_test
+      DATABASE_NAME: fastapi
       DATABASE_USERNAME: postgres
       SECRET_KEY: 795ebf791baf37ad544f675f0a19e8b4eae49dc3bcd256660f8a3e60e82d5d1f
       ALGORITHM: HS256
@@ -22,7 +22,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: password123
-          POSTGRES_DB: fastapi_test
+          POSTGRES_DB: fastapi
         ports:
           - 5432:5432
         options: >-
