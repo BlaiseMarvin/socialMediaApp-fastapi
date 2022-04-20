@@ -2,29 +2,29 @@ name: Build and Deploy Code
 
 on: [push, pull_request]
 
-env:
-  DATABASE_HOSTNAME=localhost
-  DATABASE_PORT=5432
-  DATABASE_PASSWORD=DecemberJan1998!
-  DATABASE_NAME=fastapi_test
-  DATABASE_USERNAME=blaise
-  SECRET_KEY=795ebf791baf37ad544f675f0a19e8b4eae49dc3bcd256660f8a3e60e82d5d1f
-  ALGORITHM=HS256
-  ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 jobs:
   job1:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: testing
+    environment:
+      name: testing
+    env:
+      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
+      DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}_test
+      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTE: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTE}}
     
 
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD: DecemberJan1998!
-          POSTGRES_DB: fastapi_test
+          POSTGRES_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+          POSTGRES_DB: ${{secrets.DATABASE_NAME}}_test
         ports:
           - 5432:5432
         options: >-
