@@ -3,14 +3,14 @@ from app import schemas
 
 def test_get_all_posts(authorized_client,test_posts):
     res=authorized_client.get("/posts/")
+    print(res.json())
+    # def validate(post):
+    #     return schemas.PostOut(**post)
 
-    def validate(post):
-        return schemas.PostOut(**post)
-
-    posts_map=map(validate,res.json())
-    # p=list(posts_map)
-    # print(p)
-    assert res.status_code == 200
+    # posts_map=map(validate,res.json())
+    # # p=list(posts_map)
+    # # print(p)
+    # assert res.status_code == 200
 
 def test_unauthorized_user_get_all_posts(client,test_posts):
     res=client.get("/posts/")
