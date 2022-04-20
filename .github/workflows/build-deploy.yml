@@ -2,8 +2,6 @@ name: Build and Deploy Code
 
 on: [push,pull_request]
 
-
-
 jobs:
   job1:
     environment:
@@ -22,7 +20,7 @@ jobs:
         image:  postgres
         env:
           POSTGRES_PASSWORD:  ${{secrets.DATABASE_PASSWORD}}
-          POSTGRES_DB:  ${{secrets.DATABASE_NAME}}
+          POSTGRES_DB:  ${{secrets.DATABASE_NAME}}_test
         ports:
           - 5432:5432 
         options: >-
