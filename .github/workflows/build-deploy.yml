@@ -71,8 +71,8 @@ jobs:
     needs:  [build]
 
     steps:
-      name: deploying the application
-      run:  echo "going to deploy the app"
+      - name: deploying the application
+        run:  echo "going to deploy the app"
 
 
 
